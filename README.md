@@ -19,3 +19,5 @@ For Garter Snake Genetics
 - **join -t ',' SnakeBase_tissue_SampleI_sort.csv ELelegans_tissue_ID_sort.csv > ELelegans_against_Snakebase_sampleI.csv**
 - **join -t ',' SnakeBase_tissue_SampleII_sort.csv ELelegans_tissue_ID_sort.csv > ELelegans_against_Snakebase_sampleII.csv**
 - **join -t ',' SnakeBase_tissue_SampleII_sort.csv ELelegans_tissue_ID_sort.csv > ELelegans_against_Snakebase_sampleII.txt**
+
+- join -t ',' SnakeBase_tissue_SampleI_sort.csv ELelegans_tissue_ID_sort.csv > ELelegans_against_Snakebase_sampleI.csv**
