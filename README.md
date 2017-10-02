@@ -19,7 +19,15 @@ For Garter Snake Genetics
 - **join -t ',' SnakeBase_tissue_SampleI_sort.csv ELelegans_tissue_ID_sort.csv > ELelegans_against_Snakebase_sampleI.csv**
 - **join -t ',' SnakeBase_tissue_SampleII_sort.csv ELelegans_tissue_ID_sort.csv > ELelegans_against_Snakebase_sampleII.csv**
 - **join -t ',' SnakeBase_tissue_SampleII_sort.csv ELelegans_tissue_ID_sort.csv > ELelegans_against_Snakebase_sampleII.txt**
+____________________________________________________________________________________________________________________________
+
+- awk '{FS = ","} {print $35 "," $37 "," $1 "," $8 "," $9}' SnakeBase_TeitsworthWorkingFile_ALL.csv > SnakeBase_tissue_SampleI.csv
+- awk '{FS = ","} {print $3 "," $14 "," $9 "," $13 "," $7}' ELelegans_csv.csv > ELelegans_tissue_ID.csv
+- sort -t ',' -k1n SnakeBase_tissue_SampleI.csv > SnakeBase_tissue_SampleI_sort.csv
+
+- sort -t ',' -k1n SnakeBase_tissue_SampleI.csv > SnakeBase_tissue_SampleI_sort.csv
 
 
+- awk '{FS = ","} {print $37 "," $35 "," $1 "," $8}' SnakeBase_csv.csv > SnakeBase_tissue_SampleII.csv
 
 - join -t ',' SnakeBase_tissue_SampleI_sort.csv ELelegans_tissue_ID_sort.csv > ELelegans_against_Snakebase_sampleI.csv**
