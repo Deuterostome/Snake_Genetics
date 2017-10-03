@@ -28,8 +28,7 @@ ________________________________________________________________________________
 - sort -t ',' -k 1,1 -n ELelegans_tissue_ID.csv > ELelegans_tissue_ID_sort.csv
 - sort -t ',' -k 1,1 -n ELelegans_clearID.csv > ELelegans_clearID_sort.csv
 - join -t ',' SnakeBase_Clear_ID_sampleI_sort.csv ELelegans_clearID_sort.csv > overlap.csv
-- sed -i 
-- join -t ',' SnakeBase_Clear_ID_sampleI_sort.csv ELelegans_clearID_sort.csv > overlap_1.txt
+- join -t $'\t' SnakeBase_Clear_ID_sampleI_sort_tab.txt ELelegans_clearID_sort_tab.txt > overlap_1.txt
 
 
 
