@@ -28,21 +28,10 @@ ________________________________________________________________________________
 - sort -t ',' -k 1,1 -n SnakeBase_Clear_ID_sampleI.csv > SnakeBase_Clear_ID_sampleI_sort.csv
 - sort -t ',' -k 1,1 -n ELelegans_tissue_ID.csv > ELelegans_tissue_ID_sort.csv
 - sort -t ',' -k 1,1 -n ELelegans_clearID.csv > ELelegans_clearID_sort.csv
-- join -t ',' SnakeBase_Clear_ID_sampleI_sort.csv ELelegans_clearID_sort.csv > overlap.csv
-- join -t $'\t' SnakeBase_Clear_ID_sampleI_sort_tab.txt ELelegans_clearID_sort_tab.txt > overlap_1.txt
-- sed -i '/^\s*$/d' overlap.txt
+- join -t ',' SnakeBase_Clear_ID_sampleI_sort.csv ELelegans_clearID_sort.csv > SnakeBase_SampleII_ELelegans_overlap.csv
+- sed -i '/^\s*$/d' SnakeBase_SampleII_ELelegans_overlap.txt
 
-# Sample_I from SnakeBase
+# Sample_II from SnakeBase
 - awk '{FS = ","} {print $37 "," $35 "," $1 "," $8 "," $9}' SnakeBase_TeitsworthWorkingFile_ALL.csv > SnakeBase_tissue_SampleII.csv
 - sort -t ',' -k 1,1 -n SnakeBase_tissue_SampleII.csv > SnakeBase_tissue_SampleII_sort.csv
-- join -t ',' SnakeBase_Clear_ID_sampleII.csv ELelegans_clearID_sort.csv > overlap_sampleII.csv
-- join -t $'\t' SnakeBase_Clear_ID_sampleI_sort_tab.txt ELelegans_clearID_sort_tab.txt > overlap_1.txt
-- sed -i '/^\s*$/d' overlap.txt
-
-
-
-
-
-- awk '{FS = ","} {print $37 "," $35 "," $1 "," $8}' SnakeBase_csv.csv > SnakeBase_tissue_SampleII.csv
-
-
+- join -t ',' SnakeBase_Clear_ID_sampleII.csv ELelegans_clearID_sort.csv > SnakeBase_SampleII_ELelegans_overlap.csv
