@@ -21,6 +21,7 @@ For Garter Snake Genetics
 - **join -t ',' SnakeBase_tissue_SampleII_sort.csv ELelegans_tissue_ID_sort.csv > ELelegans_against_Snakebase_sampleII.txt**
 ____________________________________________________________________________________________________________________________
 
+# Sample_I from SnakeBase
 - awk '{FS = ","} {print $35 "," $37 "," $1 "," $8 "," $9}' SnakeBase_TeitsworthWorkingFile_ALL.csv > SnakeBase_tissue_SampleI.csv
 - awk '{FS = ","} {print $3 "," $14 "," $9 "," $13 "," $7}' ELelegans_csv.csv > ELelegans_tissue_ID.csv
 - sort -t ',' -k 1,1 -n SnakeBase_tissue_SampleI.csv > SnakeBase_tissue_SampleI_sort.csv
@@ -29,6 +30,14 @@ ________________________________________________________________________________
 - sort -t ',' -k 1,1 -n ELelegans_clearID.csv > ELelegans_clearID_sort.csv
 - join -t ',' SnakeBase_Clear_ID_sampleI_sort.csv ELelegans_clearID_sort.csv > overlap.csv
 - join -t $'\t' SnakeBase_Clear_ID_sampleI_sort_tab.txt ELelegans_clearID_sort_tab.txt > overlap_1.txt
+- sed -i '/^\s*$/d' overlap.txt
+
+# Sample_I from SnakeBase
+- awk '{FS = ","} {print $37 "," $35 "," $1 "," $8 "," $9}' SnakeBase_TeitsworthWorkingFile_ALL.csv > SnakeBase_tissue_SampleII.csv
+- sort -t ',' -k 1,1 -n SnakeBase_tissue_SampleII.csv > SnakeBase_tissue_SampleII_sort.csv
+- join -t ',' SnakeBase_Clear_ID_sampleII.csv ELelegans_clearID_sort.csv > overlap_sampleII.csv
+- join -t $'\t' SnakeBase_Clear_ID_sampleI_sort_tab.txt ELelegans_clearID_sort_tab.txt > overlap_1.txt
+- sed -i '/^\s*$/d' overlap.txt
 
 
 
