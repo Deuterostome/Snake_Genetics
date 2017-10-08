@@ -35,3 +35,7 @@ ________________________________________________________________________________
 - awk '{FS = ","} {print $37 "," $35 "," $1 "," $8 "," $9}' SnakeBase_TeitsworthWorkingFile_ALL.csv > SnakeBase_tissue_SampleII.csv
 - sort -t ',' -k 1,1 -n SnakeBase_tissue_SampleII.csv > SnakeBase_tissue_SampleII_sort.csv
 - join -t ',' SnakeBase_Clear_ID_sampleII.csv ELelegans_clearID_sort.csv > SnakeBase_SampleII_ELelegans_overlap.csv
+____________________________________________________________________________________________________________________________
+# Visualization
+- awk 
+
