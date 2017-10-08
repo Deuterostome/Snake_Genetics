@@ -37,7 +37,10 @@ ________________________________________________________________________________
 - join -t ',' SnakeBase_Clear_ID_sampleII.csv ELelegans_clearID_sort.csv > SnakeBase_SampleII_ELelegans_overlap.csv
 ____________________________________________________________________________________________________________________________
 # Visualization
-- awk -F "," '$35 != "."||$37 != "."' SnakeBase_TeitsworthWorkingFile_ALL.csv > SnakeBase_tissue_all.csv
-- 
+- awk -F "," '$35 != "."||$37 != "."||$35 != ""||$37 != ""' SnakeBase_TeitsworthWorkingFile_ALL.csv > SnakeBase_tissue_all.csv
+- awk -F "," '$35 != "."||$37 != "."' SnakeBase_TeitsworthWorkingFile_ALL.csv | awk -F "," '$35 != ""||$37 != ""'> SnakeBase_tissue_all.csv
+- awk -F "," '$35 != "."||$37 != "."' SnakeBase_TeitsworthWorkingFile_ALL.csv | awk -F "," '$35 != ""||$37 != ""'> SnakeBase_tissue_all.csv
+
+
 - cat SnakeBase_TeitsworthWorkingFile_ALL.csv | awk '{FS = ","} {$37 != "."||$35 != "."}' > SnakeBase_tissue_all.csv
 - cat SnakeBase_TeitsworthWorkingFile_ALL.csv | awk '{FS = ","} {$37 = "."||$35 = "."}' > SnakeBase_tissue_all.csv
