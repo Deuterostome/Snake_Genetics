@@ -39,13 +39,6 @@ ________________________________________________________________________________
 # Visualization
 - grep "T. elegans" SnakeBase_TeitsworthWorkingFile_ALL.csv > SnakeBase_TE.csv
 - awk -F "," '$35 != "."||$37 != "."' SnakeBase_TE.csv | awk -F "," '$35 != ""||$37 != ""'> SnakeBase_TE_tissue_all.csv
-- awk '{FS = ","} {print $8}' SnakeBase_TE_tissue_all.csv | uniq > b.csv
-- awk '{FS = ","} {print $8}' SnakeBase_TE_tissue_all.csv > a.csv
-
-- cut -d "," -f 8 SnakeBase_TE.csv | uniq > a.csv
-
-- awk -F "\t" '$6 = "T. elegans"' SnakeBase_TeitsworthWorkingFile_ALL.txt > SnakeBase_TE.txt
-- awk '{FS = "\t"} {print $6 "\t" $7 "\t" $8 "\t" $9}' SnakeBase_TE.txt > b.txt
-
-- cat SnakeBase_TeitsworthWorkingFile_ALL.csv | awk '{FS = ","} {$37 != "."||$35 != "."}' > SnakeBase_tissue_all.csv
-- cat SnakeBase_TeitsworthWorkingFile_ALL.csv | awk '{FS = ","} {$37 = "."||$35 = "."}' > SnakeBase_tissue_all.csv
+- awk '{FS = ","} {print $8}' SnakeBase_TE_tissue_all.csv | sort | uniq > b.csv
+- awk '{FS = ","} {print $8 "," $1}' SnakeBase_TE_tissue_all.csv | sort -k 1,1 > a.csv
+- cat a.csv | uniq -c| awk '{ print $1 "," $2}' > c.csv
