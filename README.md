@@ -32,7 +32,7 @@ ________________________________________________________________________________
 - cat a.csv | uniq -c| awk '{ print $1 "," $2}' > c.csv
 
 # Visualization II
-- awk -F "," '$22 = "Y"||$33 = "Y"' SnakeBase_TE.csv > SnakeBase_TE_tissue_blood.csv
+- awk '{FS = ","}{OFS = ","}{$22 = "Y"||$33 = "Y"}{print $0}' SnakeBase_TE.csv > SnakeBase_TE_tissue_blood.csv
 - awk '{FS = ","} {print $8}' SnakeBase_TE_tissue_blood.csv | sort | uniq > b_tissue_blood.csv
 - awk '{FS = ","} {print $8 "," $1}' SnakeBase_TE_tissue_blood.csv | sort -k 1,1 > a_tissue_blood.csv
 - cat a_tissue_blood.csv | uniq -c| awk '{ print $1 "," $2}' > c_tissue_blood.csv
