@@ -37,10 +37,15 @@ ________________________________________________________________________________
 - join -t ',' SnakeBase_Clear_ID_sampleII.csv ELelegans_clearID_sort.csv > SnakeBase_SampleII_ELelegans_overlap.csv
 ____________________________________________________________________________________________________________________________
 # Visualization
-- awk -F "," '$35 != "."||$37 != "."||$35 != ""||$37 != ""' SnakeBase_TeitsworthWorkingFile_ALL.csv > SnakeBase_tissue_all.csv
-- awk -F "," '$35 != "."||$37 != "."' SnakeBase_TeitsworthWorkingFile_ALL.csv | awk -F "," '$35 != ""||$37 != ""'> SnakeBase_tissue_all.csv
-- awk -F "," '$35 != "."||$37 != "."' SnakeBase_TeitsworthWorkingFile_ALL.csv | awk -F "," '$35 != ""||$37 != ""'> SnakeBase_tissue_all.csv
+- grep "T. elegans" SnakeBase_TeitsworthWorkingFile_ALL.csv > SnakeBase_TE.csv
+- awk -F "," '$35 != "."||$37 != "."' SnakeBase_TE.csv | awk -F "," '$35 != ""||$37 != ""'> SnakeBase_TE_tissue_all.csv
+- awk '{FS = ","} {print $8}' SnakeBase_TE_tissue_all.csv | uniq > b.csv
+- awk '{FS = ","} {print $8}' SnakeBase_TE_tissue_all.csv > a.csv
 
+- cut -d "," -f 8 SnakeBase_TE.csv | uniq > a.csv
+
+- awk -F "\t" '$6 = "T. elegans"' SnakeBase_TeitsworthWorkingFile_ALL.txt > SnakeBase_TE.txt
+- awk '{FS = "\t"} {print $6 "\t" $7 "\t" $8 "\t" $9}' SnakeBase_TE.txt > b.txt
 
 - cat SnakeBase_TeitsworthWorkingFile_ALL.csv | awk '{FS = ","} {$37 != "."||$35 != "."}' > SnakeBase_tissue_all.csv
 - cat SnakeBase_TeitsworthWorkingFile_ALL.csv | awk '{FS = ","} {$37 = "."||$35 = "."}' > SnakeBase_tissue_all.csv
