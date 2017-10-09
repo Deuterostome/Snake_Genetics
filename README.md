@@ -31,6 +31,15 @@ ________________________________________________________________________________
 - awk '{FS = ","} {print $8 "," $1}' SnakeBase_TE_tissue_all.csv | sort -k 1,1 > a.csv
 - cat a.csv | uniq -c| awk '{ print $1 "," $2}' > c.csv
 
+# Visualization II
+- awk -F "," '$22 = "Y"||$33 = "Y"' SnakeBase_TE.csv > SnakeBase_TE_tissue_blood.csv
+- awk '{FS = ","} {print $8}' SnakeBase_TE_tissue_blood.csv | sort | uniq > b_tissue_blood.csv
+- awk '{FS = ","} {print $8 "," $1}' SnakeBase_TE_tissue_blood.csv | sort -k 1,1 > a_tissue_blood.csv
+- cat a_tissue_blood.csv | uniq -c| awk '{ print $1 "," $2}' > c_tissue_blood.csv
+
+
+
+
 # Sample_I from SnakeBase
 - awk '{FS = ","} {print $35 "," $37 "," $1 "," $8 "," $9}' SnakeBase_TE.csv > SnakeBase_TE_SampleI.csv
 - awk '{FS = ","} {print $3 "," $14 "," $9 "," $13 "," $7}' ELelegans_csv.csv > ELelegans_tissue_ID.csv
