@@ -53,13 +53,22 @@ ________________________________________________________________________________
 # Overlapping with ELelegans: Sample_I from SnakeBase
 - awk '{FS = "\t"} {print $35 "\t" $37 "\t" $1 "\t" $8 "\t" $9}' SnakeBase_TE.txt > SnakeBase_TE_SampleI.txt
 - awk '{FS = "\t"} {print $3 "\t" $14 "\t" $9 "\t" $13 "\t" $7}' ELelegans.txt > ELelegans_tissue.txt
-- sort -t ',' -k 1,1 -n SnakeBase_TE_SampleI.txt > SnakeBase_TE_SampleI_sort.csv
-(到這裡)
-- sort -t ',' -k 1,1 -n SnakeBase_TE_SampleI_Clear_sort.csv > SnakeBase_Clear_ID_sampleI_sort_1.csv
-- sort -t ',' -k 1,1 -n ELelegans_tissue_ID.csv > ELelegans_tissue_ID_sort.csv
-- sort -t ',' -k 1,1 -n ELelegans_clearID.csv > ELelegans_clearID_sort.csv
-- join -t ',' SnakeBase_Clear_ID_sampleI_sort_1.csv ELelegans_clearID_sort.csv > SnakeBase_TE_SampleI_Clear_ELelegans_overlap.csv
+- sort -t $'\t' -k 1,1 -n SnakeBase_TE_SampleI.txt > SnakeBase_TE_SampleI_sort.txt
+- sort -t $'\t' -k 1,1 -n SnakeBase_TE_SampleI_Clear.txt > SnakeBase_TE_SampleI_Clear_sort.txt
+- sort -t $'\t' -k 1,1 -n ELelegans_tissue.txt > ELelegans_tissue_sort.txt
+- sort -t $'\t' -k 1,1 -n ELelegans_tissue_Clear.txt > ELelegans_tissue_Clear_Sort.txt
+- join -t $'\t' SnakeBase_TE_SampleI_Clear_sort.txt ELelegans_tissue_Clear_Sort.txt > SnakeBase_TE_SampleI_Clear_ELelegans_overlap.txt
 - sed -i '/^\s*$/d' SnakeBase_SampleII_ELelegans_overlap.txt
+
+# Overlapping with ELelegans: Sample_II from SnakeBase
+- awk '{FS = "\t"} {print $37 "\t" $35 "\t" $1 "\t" $8 "\t" $9}' SnakeBase_TE.txt > SnakeBase_TE_SampleII.txt
+- sort -t $'\t' -k 1,1 -n SnakeBase_TE_SampleII.txt > SnakeBase_TE_SampleII_sort.txt
+- sort -t $'\t' -k 1,1 -n SnakeBase_TE_SampleII_Clear.txt > SnakeBase_TE_SampleII_Clear_sort.txt
+- sort -t $'\t' -k 1,1 -n ELelegans_tissue.txt > ELelegans_tissue_sort.txt
+- sort -t $'\t' -k 1,1 -n ELelegans_tissue_Clear.txt > ELelegans_tissue_Clear_Sort.txt
+- join -t $'\t' SnakeBase_TE_SampleII_Clear_sort.txt ELelegans_tissue_Clear_Sort.txt > SnakeBase_TE_SampleII_Clear_ELelegans_overlap.txt
+  (Not working)
+
 
 
 # Sample_I from SnakeBase
