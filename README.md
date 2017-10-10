@@ -50,7 +50,16 @@ ________________________________________________________________________________
 -> a_tissue_blood.txt -> a_tissue_blood.csv
 - cat ELelegans_tissue_a.csv | uniq -c| awk '{ print $1 "," $2}' > ELelegans_tissue_c.csv
 
-
+# Overlapping with ELelegans: Sample_I from SnakeBase
+- awk '{FS = "\t"} {print $35 "\t" $37 "\t" $1 "\t" $8 "\t" $9}' SnakeBase_TE.txt > SnakeBase_TE_SampleI.txt
+- awk '{FS = "\t"} {print $3 "\t" $14 "\t" $9 "\t" $13 "\t" $7}' ELelegans.txt > ELelegans_tissue.txt
+- sort -t ',' -k 1,1 -n SnakeBase_TE_SampleI.txt > SnakeBase_TE_SampleI_sort.csv
+(到這裡)
+- sort -t ',' -k 1,1 -n SnakeBase_TE_SampleI_Clear_sort.csv > SnakeBase_Clear_ID_sampleI_sort_1.csv
+- sort -t ',' -k 1,1 -n ELelegans_tissue_ID.csv > ELelegans_tissue_ID_sort.csv
+- sort -t ',' -k 1,1 -n ELelegans_clearID.csv > ELelegans_clearID_sort.csv
+- join -t ',' SnakeBase_Clear_ID_sampleI_sort_1.csv ELelegans_clearID_sort.csv > SnakeBase_TE_SampleI_Clear_ELelegans_overlap.csv
+- sed -i '/^\s*$/d' SnakeBase_SampleII_ELelegans_overlap.txt
 
 
 # Sample_I from SnakeBase
