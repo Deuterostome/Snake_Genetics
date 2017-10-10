@@ -42,6 +42,15 @@ ________________________________________________________________________________
 -> a_tissue_blood.txt -> a_tissue_blood.csv
 - cat a_tissue_blood.csv | uniq -c| awk '{ print $1 "," $2}' > c_tissue_blood.csv
 
+# Visualization on ELelegans
+- awk -F "\t" '$3 != ""' ELelegans.txt > ELelegans_tissue.txt
+- awk '{FS = "\t"} {print $3 "\t" $9 "\t" $14}' ELelegans_tissue.txt | sort -t '\t' -k2,2 > ELelegans_tissue_sort.txt
+- awk '{FS = "\t"} {print $2}' ELelegans_tissue_sort.txt | sort | uniq > ELelegans_uniq_population.txt
+- awk '{FS = "\t"} {print $2 "," $3}' ELelegans_tissue_sort.txt | sort -t ',' -k 1,1 > ELelegans_tissue_a.csv
+-> a_tissue_blood.txt -> a_tissue_blood.csv
+- cat ELelegans_tissue_a.csv | uniq -c| awk '{ print $1 "," $2}' > ELelegans_tissue_c.csv
+
+
 
 
 # Sample_I from SnakeBase
