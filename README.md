@@ -94,6 +94,9 @@ ________________________________________________________________________________
 -> TE2016_Population.txt -> TE2016_Population.csv
 - cat TE2016_Population.csv | uniq -c| awk '{ print $1 "," $2}' > TE2016_count.csv
 
+# Repeat in Database
+- awk '{FS = "\t"} {print $35}' SnakeBase_TE.txt | sort -n -k 1,1 | uniq -c | awk '{ print $1 "\t" $2}'|sort > SnakeBase_Repeat_ID.txt
+
 # Overlapping with ELelegans: Sample_I from SnakeBase
 - awk '{FS = "\t"} {print $35 "\t" $37 "\t" $1 "\t" $8 "\t" $9}' SnakeBase_TE.txt > SnakeBase_TE_SampleI.txt
 - awk '{FS = "\t"} {print $3 "\t" $14 "\t" $9 "\t" $13 "\t" $7}' ELelegans.txt > ELelegans_tissue.txt
@@ -112,5 +115,7 @@ ________________________________________________________________________________
 - sort -t $'\t' -k 1,1 -n ELelegans_tissue_Clear.txt > ELelegans_tissue_Clear_Sort.txt
 - join -t $'\t' SnakeBase_TE_SampleII_Clear_sort.txt ELelegans_tissue_Clear_Sort.txt > SnakeBase_TE_SampleII_Clear_ELelegans_overlap.txt
   (Not working)
+  
+  
 
 ____________________________________________________________________________________________________________________________
