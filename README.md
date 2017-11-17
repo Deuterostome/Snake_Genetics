@@ -38,9 +38,6 @@ ________________________________________________________________________________
 - mv SnakeBase_TE_1.txt SnakeBase_TE.txt
 - awk -F "\t" '$22 != "N"||$33 != "N"' SnakeBase_TE.txt > SnakeBase_TE_tissue_blood.txt
 - awk '{FS = "\t"} {print $8}' SnakeBase_TE_tissue_blood.txt | sort | uniq > b_tissue_blood.txt
-- awk '{FS = "\t"} {print $8 "\t" $1}' SnakeBase_TE_tissue_blood.txt | sort -k 1,1 > a_tissue_blood.txt
--> a_tissue_blood.txt -> a_tissue_blood.csv
-- cat a_tissue_blood.csv | uniq -c| awk '{ print $1 "," $2}' > c_tissue_blood.csv
 
 # Visualization on ELelegans
 - awk -F "\t" '$3 != ""' ELelegans.txt > ELelegans_tissue.txt
@@ -116,6 +113,15 @@ ________________________________________________________________________________
 - join -t $'\t' SnakeBase_TE_SampleII_Clear_sort.txt ELelegans_tissue_Clear_Sort.txt > SnakeBase_TE_SampleII_Clear_ELelegans_overlap.txt
   (Not working)
   
-  
+ # Visualization on Snakebase - again
+- grep "elegans" SnakeBase_ALL.txt > SnakeBase_TE.txt
+- grep "Year" SnakeBase_TeitsworthWorkingFile_ALL.txt > SnakeBase_TE_1.txt
+- cat SnakeBase_TE.txt >> SnakeBase_TE_1.txt
+- mv SnakeBase_TE_1.txt SnakeBase_TE.txt
+- awk -F "\t" '$22 != "N"||$33 != "N"' SnakeBase_TE.txt > SnakeBase_TE_tissue_blood.txt
+- awk '{FS = "\t"} {print $8}' SnakeBase_TE_tissue_blood.txt | sort -k 1,1|uniq > b_tissue_blood.txt
+- awk '{FS = "\t"} {print $8 "\t" $1 "\t" $9}' SnakeBase_TE_tissue_blood.txt | sort -k 1,1 > a_tissue_blood.txt
+-> a_tissue_blood.txt -> a_tissue_blood.csv
+- cat a_tissue_blood.csv | uniq -c| awk '{ print $1 "," $2}' > c_tissue_blood.csv
 
 ____________________________________________________________________________________________________________________________
