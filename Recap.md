@@ -4,12 +4,11 @@
 - awk -F "\t" '$22 != "N"||$33 != "N"' SnakeBase_TE_Racap.txt > SnakeBase_TE_Racap_tissue_blood.txt
 # Process through R
 - library(dplyr)
-- data = read.csv ("SnakeBase_TE_Racap_tissue_blood.csv", header = T)
-- tag = read.csv ("SnakeBase_Racap_ID.csv", header = T)
-- data_2 = read.csv("SnakeBase_TE_tissue_blood.csv", header = T)
+- tag = read.csv ("SnakeBase_Racap_ID.csv", header = T) # Modified from SnakeBase_TE_Racap_tissue_blood.txt
+- data_2 = read.csv("SnakeBase_TE_tissue_blood.csv", header = T) # Total sampling individuals
 - data_2 = arrange(data_2, Unique_ID)
 - tag = arrange(tag, Unique_ID_Re)
-- list_2 = merge(data_2, tag, by.x="Unique_ID", by.y="Unique_ID_Re") # Get the data from the same Unique_ID
+- list_2 = merge(data_2, tag, by.x="Unique_ID", by.y="Unique_ID_Re") # Get the repeat Universal ID from these two files
 - write.csv(list_2, file = "list_2.csv")
 - data_2016 = read.csv("TE2016_blood.csv", header = T)
 - data_2016_Recap = read.csv("TE2016_blood_Recap.csv", header = T)
